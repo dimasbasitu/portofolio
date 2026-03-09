@@ -52,10 +52,10 @@
             padding: 20px 50px;
             border-bottom: var(--border-thick);
             background-color: var(--white);
-            position: -webkit-sticky; /* Support untuk iOS Safari */
+            position: -webkit-sticky;
             position: sticky;
             top: 0;
-            z-index: 9999; /* Memastikan selalu di atas */
+            z-index: 9999;
             flex-wrap: wrap;
         }
 
@@ -94,18 +94,6 @@
             min-height: 80vh;
         }
 
-        .hero-title {
-            font-size: 5.5rem;
-            font-weight: 700;
-            line-height: 1;
-            text-transform: uppercase;
-            max-width: 900px;
-            position: relative;
-            z-index: 10;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-        }
-
         .blue-circle {
             width: 120px;
             height: 120px;
@@ -117,11 +105,59 @@
             z-index: 5;
         }
 
-        .hero-desc-container {
+        /* CSS Grid untuk membagi teks dan gambar di Desktop */
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            grid-template-rows: auto auto auto;
+            column-gap: 50px;
+            row-gap: 30px;
             position: relative;
-            margin-top: 40px;
-            width: 600px;
-            max-width: 100%;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-size: 5.5rem;
+            font-weight: 700;
+            line-height: 1;
+            text-transform: uppercase;
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        /* Wrapper Gambar Hero */
+        .hero-image-wrapper {
+            grid-column: 2 / 3;
+            grid-row: 1 / 4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            max-width: 450px;
+            border: var(--border-thick);
+            box-shadow: 12px 12px 0px var(--black);
+            background-color: var(--light-blue); /* Latar jika foto transparan */
+            transform: rotate(2deg); /* Efek miring Brutalist */
+            transition: transform 0.2s, box-shadow 0.2s;
+            object-fit: cover;
+        }
+
+        .hero-image-wrapper img:hover {
+            transform: rotate(0deg) translate(-5px, -5px);
+            box-shadow: 16px 16px 0px var(--black);
+        }
+
+        .hero-desc-container {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            position: relative;
+            width: 100%;
+            max-width: 650px;
         }
 
         .red-shape {
@@ -149,9 +185,9 @@
 
         /* Download CV Button */
         .hero-actions {
-            margin-top: 50px;
-            position: relative;
-            z-index: 10;
+            grid-column: 1 / 2;
+            grid-row: 3 / 4;
+            margin-top: 10px;
         }
 
         .btn-download {
@@ -611,7 +647,8 @@
 
         /* Tablet & Laptop Sedang */
         @media (max-width: 1024px) {
-            .hero-title { font-size: 4rem; }
+            .hero-inner { grid-template-columns: 1fr 1fr; }
+            .hero-title { font-size: 4.5rem; }
             #work-projects { grid-template-columns: 1fr; }
             .project-card-container { border-right: none; border-bottom: var(--border-thick); }
             .project-card-container:last-child { border-bottom: none; }
@@ -638,10 +675,25 @@
                 border-right: none; 
             }
 
+            /* Ubah Hero menjadi kolom tunggal: Title -> Image -> Desc -> Button */
+            .hero-inner {
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+            }
+
             .hero-title { 
-                font-size: clamp(2.2rem, 10vw, 3rem); 
+                font-size: clamp(2.2rem, 10vw, 3.5rem); 
                 line-height: 1.2;
             }
+
+            /* Penyesuaian Foto di Mobile */
+            .hero-image-wrapper img {
+                max-width: 100%;
+                transform: rotate(0deg); /* Menghapus rotasi agar fit di layar HP */
+                box-shadow: 8px 8px 0px var(--black);
+            }
+
             .section-title, .achievements-title { 
                 font-size: 2.5rem; 
             }
@@ -701,7 +753,7 @@
     <header>
         <div class="logo">DIMAS BASITU</div>
         <nav>
-            <a href="#experience">ABOUT/EXPERIENCE</a>
+            <a href="#experience">EXPERIENCE</a>
             <a href="#achievements">ACHIEVEMENTS</a>
             <a href="#work-projects">WORK PROJECTS</a>
             <a href="#tools">TOOLS</a>
@@ -714,24 +766,31 @@
 
         <section id="hero">
             <div class="blue-circle"></div>
-            <h1 class="hero-title">DIGITAL MARKETING SUPERVISOR | SEO & PERFORMANCE SPECIALIST</h1>
             
-            <div class="hero-desc-container">
-                <div class="red-shape"></div>
-                <div class="yellow-box">
-                    6+ years of experience driving growth across SEO, Meta Ads, and Google Ads. From leading teams to managing 28+ websites and IDR 150M+ monthly budgets, I specialize in scaling digital performance—proven by a 35% CPA reduction and 40% conversion boost through data-driven strategies.
+            <div class="hero-inner">
+                <h1 class="hero-title">DIGITAL MARKETING SUPERVISOR | SEO & PERFORMANCE SPECIALIST</h1>
+                
+                <div class="hero-image-wrapper">
+                    <img src="https://imgur.com/TkkmmWz.png" alt="Dimas Basitu - Profile Picture">
                 </div>
-            </div>
 
-            <div class="hero-actions">
-                <a href="https://drive.google.com/file/d/1fljsLePmhwkNYYCZo8bzE7jZGe6SHF6g/view?usp=sharing" target="_blank" class="btn-download">
-                    DOWNLOAD CV
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                </a>
+                <div class="hero-desc-container">
+                    <div class="red-shape"></div>
+                    <div class="yellow-box">
+                        6+ years of experience driving growth across SEO, Meta Ads, and Google Ads. From leading teams to managing 28+ websites and IDR 150M+ monthly budgets, I specialize in scaling digital performance—proven by a 35% CPA reduction and 40% conversion boost through data-driven strategies.
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="https://drive.google.com/file/d/1fljsLePmhwkNYYCZo8bzE7jZGe6SHF6g/view?usp=sharing" target="_blank" class="btn-download">
+                        DOWNLOAD CV
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -905,7 +964,7 @@
 
                 <div class="project-card-container">
                     <div class="project-title">
-                        <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank">META ADS PERFORMANCE AT BIO INDUSTRI</a>
+                        <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank">META ADS PERFORMANCE AT BIO INDUSTRI OMNIPRESEN</a>
                         <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
                     </div>
                     <p class="project-desc">
