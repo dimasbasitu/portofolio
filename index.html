@@ -30,7 +30,13 @@
             color: var(--black);
             line-height: 1.5;
             width: 100%;
-            overflow-x: hidden; /* Mencegah scroll menyamping */
+            scroll-behavior: smooth;
+        }
+
+        /* Pembungkus utama untuk mencegah scroll horizontal tanpa merusak sticky header */
+        .main-wrapper {
+            overflow-x: hidden;
+            width: 100%;
         }
 
         a {
@@ -38,7 +44,7 @@
             color: inherit;
         }
 
-        /* Navbar */
+        /* Navbar - Dibuat Sticky */
         header {
             display: flex;
             justify-content: space-between;
@@ -46,9 +52,10 @@
             padding: 20px 50px;
             border-bottom: var(--border-thick);
             background-color: var(--white);
+            position: -webkit-sticky; /* Support untuk iOS Safari */
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 9999; /* Memastikan selalu di atas */
             flex-wrap: wrap;
         }
 
@@ -95,7 +102,7 @@
             max-width: 900px;
             position: relative;
             z-index: 10;
-            overflow-wrap: break-word; /* Mencegah teks meluber */
+            overflow-wrap: break-word;
             word-wrap: break-word;
         }
 
@@ -612,9 +619,8 @@
             .cert-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        /* 📱 PERBAIKAN KHUSUS UNTUK TAMPILAN MOBILE DI SINI 📱 */
+        /* MOBILE VIEW */
         @media (max-width: 768px) {
-            /* Navbar */
             header { 
                 padding: 15px; 
                 flex-direction: column; 
@@ -622,7 +628,6 @@
             }
             nav { justify-content: center; }
             
-            /* Hapus border kiri & kanan pada mobile agar layar penuh tanpa jarak abu-abu */
             #hero { 
                 padding: 50px 20px; 
                 border-left: none; 
@@ -633,7 +638,6 @@
                 border-right: none; 
             }
 
-            /* Gunakan clamp() agar font mengecil otomatis, tidak nabrak layar */
             .hero-title { 
                 font-size: clamp(2.2rem, 10vw, 3rem); 
                 line-height: 1.2;
@@ -642,7 +646,6 @@
                 font-size: 2.5rem; 
             }
 
-            /* Sesuaikan lebar & posisi elemen visual */
             .blue-circle { 
                 width: 80px; 
                 height: 80px; 
@@ -654,7 +657,6 @@
                 height: 80px;
             }
 
-            /* Padding card dan section dikecilkan agar hemat ruang di layar HP */
             #experience, #achievements, #work-projects, #tools, #certifications { 
                 padding: 40px 15px; 
             }
@@ -665,7 +667,6 @@
                 padding: 30px 15px; 
             }
 
-            /* Teks dalam card */
             .yellow-box { 
                 padding: 20px; 
                 font-size: 1rem; 
@@ -678,7 +679,6 @@
             .job-date { margin-top: 5px; }
             .project-title { font-size: 1.5rem; }
 
-            /* Achievement tata letak ulang untuk mobile */
             .achievement-card { 
                 flex-direction: column; 
                 text-align: center; 
@@ -692,7 +692,6 @@
             }
             .achievement-icon { margin: 0 auto; }
             
-            /* Grid menjadi 1 kolom penuh di layar kecil */
             .cert-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -702,7 +701,7 @@
     <header>
         <div class="logo">DIMAS BASITU</div>
         <nav>
-            <a href="#experience">EXPERIENCE</a>
+            <a href="#experience">ABOUT/EXPERIENCE</a>
             <a href="#achievements">ACHIEVEMENTS</a>
             <a href="#work-projects">WORK PROJECTS</a>
             <a href="#tools">TOOLS</a>
@@ -711,367 +710,369 @@
         </nav>
     </header>
 
-    <section id="hero">
-        <div class="blue-circle"></div>
-        <h1 class="hero-title">DIGITAL MARKETING SUPERVISOR | SEO & PERFORMANCE SPECIALIST</h1>
-        
-        <div class="hero-desc-container">
-            <div class="red-shape"></div>
-            <div class="yellow-box">
-                6+ years of experience driving growth across SEO, Meta Ads, and Google Ads. From leading teams to managing 28+ websites and IDR 150M+ monthly budgets, I specialize in scaling digital performance—proven by a 35% CPA reduction and 40% conversion boost through data-driven strategies.
-            </div>
-        </div>
+    <div class="main-wrapper">
 
-        <div class="hero-actions">
-            <a href="https://drive.google.com/file/d/1fljsLePmhwkNYYCZo8bzE7jZGe6SHF6g/view?usp=sharing" target="_blank" class="btn-download">
-                DOWNLOAD CV
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-            </a>
-        </div>
-    </section>
-
-    <div class="marquee-wrapper">
-        <div class="marquee-content">
-            <span>SEO</span> <span class="star">&#9733;</span>
-            <span>TECHNICAL SEO</span> <span class="star">&#9733;</span>
-            <span>META ADS</span> <span class="star">&#9733;</span>
-            <span>GOOGLE ADS</span> <span class="star">&#9733;</span>
-            <span>PERFORMANCE MARKETING</span> <span class="star">&#9733;</span>
-            <span>DIGITAL ADVERTISING</span> <span class="star">&#9733;</span>
-            <span>DATA ANALYSIS</span> <span class="star">&#9733;</span>
-            <span>BUDGET MANAGEMENT</span> <span class="star">&#9733;</span>
-            <span>CRO</span> <span class="star">&#9733;</span>
+        <section id="hero">
+            <div class="blue-circle"></div>
+            <h1 class="hero-title">DIGITAL MARKETING SUPERVISOR | SEO & PERFORMANCE SPECIALIST</h1>
             
-            <span>SEO</span> <span class="star">&#9733;</span>
-            <span>TECHNICAL SEO</span> <span class="star">&#9733;</span>
-            <span>META ADS</span> <span class="star">&#9733;</span>
-            <span>GOOGLE ADS</span> <span class="star">&#9733;</span>
-            <span>PERFORMANCE MARKETING</span> <span class="star">&#9733;</span>
-            <span>DIGITAL ADVERTISING</span> <span class="star">&#9733;</span>
-            <span>DATA ANALYSIS</span> <span class="star">&#9733;</span>
-            <span>BUDGET MANAGEMENT</span> <span class="star">&#9733;</span>
-            <span>CRO</span> <span class="star">&#9733;</span>
-        </div>
-    </div>
-
-    <div class="section-container">
-        
-        <section id="experience">
-            <h2 class="section-title">Experience</h2>
-            
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Digital Marketing Supervisor</div>
-                        <div class="job-company">PT Qhome Sukses Abadi (Qhomemart) Yogyakarta, Indonesia</div>
-                    </div>
-                    <div class="job-date">Aug 2025 - Present</div>
+            <div class="hero-desc-container">
+                <div class="red-shape"></div>
+                <div class="yellow-box">
+                    6+ years of experience driving growth across SEO, Meta Ads, and Google Ads. From leading teams to managing 28+ websites and IDR 150M+ monthly budgets, I specialize in scaling digital performance—proven by a 35% CPA reduction and 40% conversion boost through data-driven strategies.
                 </div>
-                <p class="job-summary">
-                    Manage Google Ads. Meta Ads, and SEO strategies, including budget planning, campaign optimization, and performance analysis. Improve ROAS, reduce acquisition costs, and boost organic visibility through data-driven execution and cross-team collaboration.
-                </p>
-                <ul class="job-details">
-                    <li>Reduced cost per acquisition (CPA) by 35% through optimized bidding, targeting, and creative testing.</li>
-                    <li>Boosted website conversions by 40% after implementing data-driven landing page and funnel improvements.</li>
-                    <li>Managed and optimized monthly ad budgets of up to IDR 60-150 million with efficient cost control.</li>
-                    <li>Improved page ranking performance, with 20+ priority keywords reaching Google page 1.</li>
-                </ul>
             </div>
 
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">SEO Supervisor</div>
-                        <div class="job-company">Bio Industri Omnipresen Yogyakarta, Indonesia</div>
-                    </div>
-                    <div class="job-date">Oct 2024 - Jul 2025</div>
-                </div>
-                <p class="job-summary">
-                    Led SEO strategies and optimizations for 28 websites and 1 web store. Responsible for technical audits, keyword research, performance analysis, and team coordination to improve organic visibility and sustained traffic growth.
-                </p>
-                <ul class="job-details">
-                    <li>Increased organic traffic by 150% within 6 months through integrated SEO strategies.</li>
-                    <li>Reduced average bounce rate by 25% through content optimization and improved internal linking structure.</li>
-                    <li>Doubled B2B leads in 6 months by boosting product page visibility and implementing more strategic conversion forms.</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Meta Ads Specialist</div>
-                        <div class="job-company">Bio Industri Omnipresen Yogyakarta, Indonesia</div>
-                    </div>
-                    <div class="job-date">May 2022 - Oct 2024</div>
-                </div>
-                <p class="job-summary">
-                    Managed and optimized Meta Ads (Facebook & Instagram) campaigns focusing on performance marketing strategies. Responsible for creating ad creatives (copywriting and visuals), budget allocation, and conducting A/B testing to improve campaign effectiveness.
-                </p>
-                <ul class="job-details">
-                    <li>Doubled B2B lead generation by targeting more relevant niche industries.</li>
-                    <li>Developed full-funnel advertising strategies, enhancing long-term campaign performance significantly.</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Meta Ads Specialist</div>
-                        <div class="job-company">Digimarka Yogyakarta, Indonesia</div>
-                    </div>
-                    <div class="job-date">May 2021 - Dec 2021</div>
-                </div>
-                <p class="job-summary">
-                    Designed, managed, and optimized paid ad campaigns on Meta platforms (Facebook & Instagram) for clients across various sectors.
-                </p>
-                <ul class="job-details">
-                    <li>Improved ROAS by up to 2.5x for several clients through refined audience segmentation and budget optimization.</li>
-                    <li>Reduced average CPC by 35% through creative testing and more relevant copywriting.</li>
-                    <li>Managed over 50 active campaigns simultaneously, focusing on efficiency and measurable results.</li>
-                </ul>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Digital Marketing Specialist</div>
-                        <div class="job-company">CV Magic Skin (Roro Mendut Skin) Yogyakarta, Indonesia</div>
-                    </div>
-                    <div class="job-date">Dec 2019 - Dec 2020</div>
-                </div>
-                <p class="job-summary">
-                    Oversaw all digital marketing initiatives, including e-commerce management, paid advertising planning (PPC), and landing page development.
-                </p>
-                <ul class="job-details">
-                    <li>Initiated remarketing strategies to improve customer retention and repeat purchases.</li>
-                    <li>Increased online sales conversion by optimizing user flow and product pages on the company's e-commerce platforms.</li>
-                </ul>
+            <div class="hero-actions">
+                <a href="https://drive.google.com/file/d/1fljsLePmhwkNYYCZo8bzE7jZGe6SHF6g/view?usp=sharing" target="_blank" class="btn-download">
+                    DOWNLOAD CV
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
             </div>
         </section>
 
-        <section id="achievements">
-            <h2 class="achievements-title">Achievements</h2>
-            
-            <div class="achievement-card">
-                <div class="achievement-year">2024</div>
-                <div class="achievement-text">
-                    <h3>Best Employee</h3>
-                    <p>Bio Industri Omnipresen</p>
-                </div>
-                <div class="achievement-icon">🏆</div>
-            </div>
-        </section>
-
-        <section id="work-projects">
-            
-            <div class="project-card-container">
-                <div class="project-title">
-                    <a href="https://docs.google.com/spreadsheets/d/1k1qai2wSxsrwVXdLacDQVDmucoY3oostVpIYk2py4jY/edit?usp=sharing" target="_blank">SEO RANKING PORTOFOLIO</a>
-                    <a href="https://docs.google.com/spreadsheets/d/1k1qai2wSxsrwVXdLacDQVDmucoY3oostVpIYk2py4jY/edit?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
-                </div>
-                <p class="project-desc">
-                    Ranked 140+ keywords on Google’s first page, including Rank 1 for high-volume terms (90k+ searches). Successfully dominated local and national search results to drive significant organic traffic and e-commerce growth.
-                </p>
-                <div class="tags">
-                    <span class="tag">SEO Strategy</span>
-                    <span class="tag">Technical SEO</span>
-                    <span class="tag">Keyword Research</span>
-                    <span class="tag">On-Page SEO</span>
-                    <span class="tag">E-commerce SEO</span>
-                </div>
-            </div>
-
-            <div class="project-card-container">
-                <div class="project-title">
-                    <a href="https://drive.google.com/file/d/13KyHWcIgjKYJRWIjZVuRrFEHaY7Xw5Rf/view?usp=sharing" target="_blank">SEO STUDY CASE AT BIO INDUSTRI OMNIPRESEN</a>
-                    <a href="https://drive.google.com/file/d/13KyHWcIgjKYJRWIjZVuRrFEHaY7Xw5Rf/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
-                </div>
-                <p class="project-desc">
-                    Optimized the SEO performance for Bio Industri’s digital ecosystem, achieving 220K+ clicks and 4.4M+ impressions. Managed multiple B2B and WooCommerce-based platforms to enhance organic reach and establish a sustainable direct-to-consumer sales channel.
-                </p>
-                <div class="tags">
-                    <span class="tag">B2B SEO</span>
-                    <span class="tag">WooCommerce</span>
-                    <span class="tag">Organic Growth</span>
-                    <span class="tag">Digital Ecosystem</span>
-                    <span class="tag">Performance Optimization</span>
-                </div>
-            </div>
-
-            <div class="project-card-container">
-                <div class="project-title">
-                    <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank">META ADS PERFORMANCE FOR BIO INDUSTRI</a>
-                    <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
-                </div>
-                <p class="project-desc">
-                    Managed end-to-end Meta Ads campaigns for niche wood and leather care products, achieving 2,000+ website purchases with a highly efficient Cost per Purchase (CPP) of IDR 670. Focused on creative testing and full-funnel optimization to scale D2C sales.
-                </p>
-                <div class="tags">
-                    <span class="tag">Meta Ads</span>
-                    <span class="tag">Creative Testing</span>
-                    <span class="tag">Full-Funnel Optimization</span>
-                    <span class="tag">D2C Scaling</span>
-                    <span class="tag">Performance Marketing</span>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="tools">
-            <h2 class="section-title">Tools</h2>
-            <div class="tools-grid">
+        <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <span>SEO</span> <span class="star">&#9733;</span>
+                <span>TECHNICAL SEO</span> <span class="star">&#9733;</span>
+                <span>META ADS</span> <span class="star">&#9733;</span>
+                <span>GOOGLE ADS</span> <span class="star">&#9733;</span>
+                <span>PERFORMANCE MARKETING</span> <span class="star">&#9733;</span>
+                <span>DIGITAL ADVERTISING</span> <span class="star">&#9733;</span>
+                <span>DATA ANALYSIS</span> <span class="star">&#9733;</span>
+                <span>BUDGET MANAGEMENT</span> <span class="star">&#9733;</span>
+                <span>CRO</span> <span class="star">&#9733;</span>
                 
-                <div class="tool-category-card">
-                    <h3 class="tool-category-title">Analysis</h3>
-                    <ul class="tool-list">
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
-                            </div>
-                            Google Analytics 4 (GA4)
-                        </li>
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                            </div>
-                            Google Search Console
-                        </li>
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-                            </div>
-                            Looker Studio
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="tool-category-card">
-                    <h3 class="tool-category-title">SEO Tools</h3>
-                    <ul class="tool-list">
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
-                            </div>
-                            Ahrefs
-                        </li>
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
-                            </div>
-                            SEMrush
-                        </li>
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
-                            </div>
-                            Screaming Frog
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="tool-category-card">
-                    <h3 class="tool-category-title">Technical Ads</h3>
-                    <ul class="tool-list">
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M21.056 9.385c-1.385-2.083-4.088-2.618-6.04-1.196L12 10.368l-3.016-2.18c-1.952-1.422-4.655-.887-6.04 1.196C1.558 11.468 2.053 14 4.145 15.422l3.016 2.18c1.952 1.422 4.655.887 6.04-1.196l.8-.976.8.976c1.385 2.083 4.088 2.618 6.04 1.196 2.092-1.422 2.587-3.954 1.199-6.037l-.984-2.18z"/></svg>
-                            </div>
-                            Meta Events Manager
-                        </li>
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
-                            </div>
-                            Google Ads Manager
-                        </li>
-                        <li class="tool-item">
-                            <div class="tool-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
-                            </div>
-                            Google Tag Manager (GTM)
-                        </li>
-                    </ul>
-                </div>
-
+                <span>SEO</span> <span class="star">&#9733;</span>
+                <span>TECHNICAL SEO</span> <span class="star">&#9733;</span>
+                <span>META ADS</span> <span class="star">&#9733;</span>
+                <span>GOOGLE ADS</span> <span class="star">&#9733;</span>
+                <span>PERFORMANCE MARKETING</span> <span class="star">&#9733;</span>
+                <span>DIGITAL ADVERTISING</span> <span class="star">&#9733;</span>
+                <span>DATA ANALYSIS</span> <span class="star">&#9733;</span>
+                <span>BUDGET MANAGEMENT</span> <span class="star">&#9733;</span>
+                <span>CRO</span> <span class="star">&#9733;</span>
             </div>
-        </section>
+        </div>
 
-        <section id="certifications">
-            <h2 class="section-title">Certifications</h2>
+        <div class="section-container">
             
-            <div class="cert-grid">
+            <section id="experience">
+                <h2 class="section-title">Experience</h2>
                 
-                <div class="cert-card">
-                    <div>
-                        <div class="cert-brand">
-                            <svg viewBox="0 0 24 24" fill="#ff7a59">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
-                            </svg>
-                            HubSpot Academy
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Digital Marketing Supervisor</div>
+                            <div class="job-company">PT Qhome Sukses Abadi (Qhomemart) Yogyakarta, Indonesia</div>
                         </div>
-                        <h3 class="cert-title-text">Digital Marketing</h3>
+                        <div class="job-date">Aug 2025 - Present</div>
                     </div>
-                    <a href="https://app-na2.hubspot.com/academy/achievements/9pg03xcv/en/1/dimas-basitu/digital-marketing" target="_blank" class="btn-view">View Credential &#8599;</a>
+                    <p class="job-summary">
+                        Manage Google Ads. Meta Ads, and SEO strategies, including budget planning, campaign optimization, and performance analysis. Improve ROAS, reduce acquisition costs, and boost organic visibility through data-driven execution and cross-team collaboration.
+                    </p>
+                    <ul class="job-details">
+                        <li>Reduced cost per acquisition (CPA) by 35% through optimized bidding, targeting, and creative testing.</li>
+                        <li>Boosted website conversions by 40% after implementing data-driven landing page and funnel improvements.</li>
+                        <li>Managed and optimized monthly ad budgets of up to IDR 60-150 million with efficient cost control.</li>
+                        <li>Improved page ranking performance, with 20+ priority keywords reaching Google page 1.</li>
+                    </ul>
                 </div>
 
-                <div class="cert-card">
-                    <div>
-                        <div class="cert-brand">
-                            <svg viewBox="0 0 24 24" fill="#ff7a59">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
-                            </svg>
-                            HubSpot Academy
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">SEO Supervisor</div>
+                            <div class="job-company">Bio Industri Omnipresen Yogyakarta, Indonesia</div>
                         </div>
-                        <h3 class="cert-title-text">Content Marketing</h3>
+                        <div class="job-date">Oct 2024 - Jul 2025</div>
                     </div>
-                    <a href="https://app-na2.hubspot.com/academy/achievements/yw64hhwy/en/1/dimas-basitu/content-marketing" target="_blank" class="btn-view">View Credential &#8599;</a>
+                    <p class="job-summary">
+                        Led SEO strategies and optimizations for 28 websites and 1 web store. Responsible for technical audits, keyword research, performance analysis, and team coordination to improve organic visibility and sustained traffic growth.
+                    </p>
+                    <ul class="job-details">
+                        <li>Increased organic traffic by 150% within 6 months through integrated SEO strategies.</li>
+                        <li>Reduced average bounce rate by 25% through content optimization and improved internal linking structure.</li>
+                        <li>Doubled B2B leads in 6 months by boosting product page visibility and implementing more strategic conversion forms.</li>
+                    </ul>
                 </div>
 
-                <div class="cert-card">
-                    <div>
-                        <div class="cert-brand">
-                            <svg viewBox="0 0 24 24" fill="#1e3a8a">
-                                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                            </svg>
-                            Badan Nasional Sertifikasi Profesi (BNSP)
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Meta Ads Specialist</div>
+                            <div class="job-company">Bio Industri Omnipresen Yogyakarta, Indonesia</div>
                         </div>
-                        <h3 class="cert-title-text">Digital Marketing</h3>
+                        <div class="job-date">May 2022 - Oct 2024</div>
                     </div>
-                    <a href="https://drive.google.com/file/d/1Yxb_Sq5QvKe1KdMvVXsEA466-TQylv_I/view" target="_blank" class="btn-view">View Credential &#8599;</a>
+                    <p class="job-summary">
+                        Managed and optimized Meta Ads (Facebook & Instagram) campaigns focusing on performance marketing strategies. Responsible for creating ad creatives (copywriting and visuals), budget allocation, and conducting A/B testing to improve campaign effectiveness.
+                    </p>
+                    <ul class="job-details">
+                        <li>Doubled B2B lead generation by targeting more relevant niche industries.</li>
+                        <li>Developed full-funnel advertising strategies, enhancing long-term campaign performance significantly.</li>
+                    </ul>
                 </div>
 
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Meta Ads Specialist</div>
+                            <div class="job-company">Digimarka Yogyakarta, Indonesia</div>
+                        </div>
+                        <div class="job-date">May 2021 - Dec 2021</div>
+                    </div>
+                    <p class="job-summary">
+                        Designed, managed, and optimized paid ad campaigns on Meta platforms (Facebook & Instagram) for clients across various sectors.
+                    </p>
+                    <ul class="job-details">
+                        <li>Improved ROAS by up to 2.5x for several clients through refined audience segmentation and budget optimization.</li>
+                        <li>Reduced average CPC by 35% through creative testing and more relevant copywriting.</li>
+                        <li>Managed over 50 active campaigns simultaneously, focusing on efficiency and measurable results.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Digital Marketing Specialist</div>
+                            <div class="job-company">CV Magic Skin (Roro Mendut Skin) Yogyakarta, Indonesia</div>
+                        </div>
+                        <div class="job-date">Dec 2019 - Dec 2020</div>
+                    </div>
+                    <p class="job-summary">
+                        Oversaw all digital marketing initiatives, including e-commerce management, paid advertising planning (PPC), and landing page development.
+                    </p>
+                    <ul class="job-details">
+                        <li>Initiated remarketing strategies to improve customer retention and repeat purchases.</li>
+                        <li>Increased online sales conversion by optimizing user flow and product pages on the company's e-commerce platforms.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="achievements">
+                <h2 class="achievements-title">Achievements</h2>
+                
+                <div class="achievement-card">
+                    <div class="achievement-year">2024</div>
+                    <div class="achievement-text">
+                        <h3>Best Employee</h3>
+                        <p>Bio Industri Omnipresen</p>
+                    </div>
+                    <div class="achievement-icon">🏆</div>
+                </div>
+            </section>
+
+            <section id="work-projects">
+                
+                <div class="project-card-container">
+                    <div class="project-title">
+                        <a href="https://docs.google.com/spreadsheets/d/1k1qai2wSxsrwVXdLacDQVDmucoY3oostVpIYk2py4jY/edit?usp=sharing" target="_blank">SEO RANKING PORTOFOLIO AT QHOMEMART</a>
+                        <a href="https://docs.google.com/spreadsheets/d/1k1qai2wSxsrwVXdLacDQVDmucoY3oostVpIYk2py4jY/edit?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
+                    </div>
+                    <p class="project-desc">
+                        Ranked 140+ keywords on Google’s first page, including Rank 1 for high-volume terms (90k+ searches). Successfully dominated local and national search results to drive significant organic traffic and e-commerce growth.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">SEO Strategy</span>
+                        <span class="tag">Technical SEO</span>
+                        <span class="tag">Keyword Research</span>
+                        <span class="tag">On-Page SEO</span>
+                        <span class="tag">E-commerce SEO</span>
+                    </div>
+                </div>
+
+                <div class="project-card-container">
+                    <div class="project-title">
+                        <a href="https://drive.google.com/file/d/13KyHWcIgjKYJRWIjZVuRrFEHaY7Xw5Rf/view?usp=sharing" target="_blank">SEO STUDY CASE AT BIO INDUSTRI OMNIPRESEN</a>
+                        <a href="https://drive.google.com/file/d/13KyHWcIgjKYJRWIjZVuRrFEHaY7Xw5Rf/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
+                    </div>
+                    <p class="project-desc">
+                        Optimized the SEO performance for Bio Industri’s digital ecosystem, achieving 220K+ clicks and 4.4M+ impressions. Managed multiple B2B and WooCommerce-based platforms to enhance organic reach and establish a sustainable direct-to-consumer sales channel.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">B2B SEO</span>
+                        <span class="tag">WooCommerce</span>
+                        <span class="tag">Organic Growth</span>
+                        <span class="tag">Digital Ecosystem</span>
+                        <span class="tag">Performance Optimization</span>
+                    </div>
+                </div>
+
+                <div class="project-card-container">
+                    <div class="project-title">
+                        <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank">META ADS PERFORMANCE AT BIO INDUSTRI</a>
+                        <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
+                    </div>
+                    <p class="project-desc">
+                        Managed end-to-end Meta Ads campaigns for niche wood and leather care products, achieving 2,000+ website purchases with a highly efficient Cost per Purchase (CPP) of IDR 670. Focused on creative testing and full-funnel optimization to scale D2C sales.
+                    </p>
+                    <div class="tags">
+                        <span class="tag">Meta Ads</span>
+                        <span class="tag">Creative Testing</span>
+                        <span class="tag">Full-Funnel Optimization</span>
+                        <span class="tag">D2C Scaling</span>
+                        <span class="tag">Performance Marketing</span>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="tools">
+                <h2 class="section-title">Tools</h2>
+                <div class="tools-grid">
+                    
+                    <div class="tool-category-card">
+                        <h3 class="tool-category-title">Analysis</h3>
+                        <ul class="tool-list">
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
+                                </div>
+                                Google Analytics 4 (GA4)
+                            </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                                </div>
+                                Google Search Console
+                            </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                                </div>
+                                Looker Studio
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tool-category-card">
+                        <h3 class="tool-category-title">SEO Tools</h3>
+                        <ul class="tool-list">
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+                                </div>
+                                Ahrefs
+                            </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+                                </div>
+                                SEMrush
+                            </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
+                                </div>
+                                Screaming Frog
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tool-category-card">
+                        <h3 class="tool-category-title">Technical Ads</h3>
+                        <ul class="tool-list">
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M21.056 9.385c-1.385-2.083-4.088-2.618-6.04-1.196L12 10.368l-3.016-2.18c-1.952-1.422-4.655-.887-6.04 1.196C1.558 11.468 2.053 14 4.145 15.422l3.016 2.18c1.952 1.422 4.655.887 6.04-1.196l.8-.976.8.976c1.385 2.083 4.088 2.618 6.04 1.196 2.092-1.422 2.587-3.954 1.199-6.037l-.984-2.18z"/></svg>
+                                </div>
+                                Meta Events Manager
+                            </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
+                                </div>
+                                Google Ads Manager
+                            </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+                                </div>
+                                Google Tag Manager (GTM)
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section id="certifications">
+                <h2 class="section-title">Certifications</h2>
+                
+                <div class="cert-grid">
+                    
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-brand">
+                                <svg viewBox="0 0 24 24" fill="#ff7a59">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+                                </svg>
+                                HubSpot Academy
+                            </div>
+                            <h3 class="cert-title-text">Digital Marketing</h3>
+                        </div>
+                        <a href="https://app-na2.hubspot.com/academy/achievements/9pg03xcv/en/1/dimas-basitu/digital-marketing" target="_blank" class="btn-view">View Credential &#8599;</a>
+                    </div>
+
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-brand">
+                                <svg viewBox="0 0 24 24" fill="#ff7a59">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
+                                </svg>
+                                HubSpot Academy
+                            </div>
+                            <h3 class="cert-title-text">Content Marketing</h3>
+                        </div>
+                        <a href="https://app-na2.hubspot.com/academy/achievements/yw64hhwy/en/1/dimas-basitu/content-marketing" target="_blank" class="btn-view">View Credential &#8599;</a>
+                    </div>
+
+                    <div class="cert-card">
+                        <div>
+                            <div class="cert-brand">
+                                <svg viewBox="0 0 24 24" fill="#1e3a8a">
+                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
+                                </svg>
+                                Badan Nasional Sertifikasi Profesi (BNSP)
+                            </div>
+                            <h3 class="cert-title-text">Digital Marketing</h3>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1Yxb_Sq5QvKe1KdMvVXsEA466-TQylv_I/view" target="_blank" class="btn-view">View Credential &#8599;</a>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <section id="contact">
+            <h2 class="contact-title">LET'S TALK</h2>
+            <div class="social-links">
+                <a href="mailto:tkjdhimas@gmail.com" class="social-icon" aria-label="Email">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/dimas-basitu/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-1.85 0-2.59 1.02-3 1.66v-1.42h-2.9v9.32h2.9v-5.2c0-.52.1-1.03.48-1.4.38-.37.91-.48 1.45-.48 1.13 0 1.54.83 1.54 2.05v5.03h2.89M7.05 10.5h2.9v9.32h-2.9v-9.32M8.5 4.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5z"/>
+                    </svg>
+                </a>
+                <a href="https://wa.me/6285157381244" target="_blank" class="social-icon" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-text">
+                © 2026 DIMAS BASITU. ALL RIGHTS RESERVED.
             </div>
         </section>
 
-    </div>
-
-    <section id="contact">
-        <h2 class="contact-title">LET'S TALK</h2>
-        <div class="social-links">
-            <a href="mailto:tkjdhimas@gmail.com" class="social-icon" aria-label="Email">
-                <svg viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/dimas-basitu/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24">
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-1.85 0-2.59 1.02-3 1.66v-1.42h-2.9v9.32h2.9v-5.2c0-.52.1-1.03.48-1.4.38-.37.91-.48 1.45-.48 1.13 0 1.54.83 1.54 2.05v5.03h2.89M7.05 10.5h2.9v9.32h-2.9v-9.32M8.5 4.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5z"/>
-                </svg>
-            </a>
-            <a href="https://wa.me/6285157381244" target="_blank" class="social-icon" aria-label="WhatsApp">
-                <svg viewBox="0 0 24 24">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-                </svg>
-            </a>
-        </div>
-        <div class="footer-text">
-            © 2026 DIMAS BASITU. ALL RIGHTS RESERVED.
-        </div>
-    </section>
-
-</body>
+    </div> </body>
 </html>
