@@ -141,8 +141,8 @@
             max-width: 450px;
             border: var(--border-thick);
             box-shadow: 12px 12px 0px var(--black);
-            background-color: var(--light-blue); /* Latar jika foto transparan */
-            transform: rotate(2deg); /* Efek miring Brutalist */
+            background-color: var(--light-blue);
+            transform: rotate(2deg);
             transition: transform 0.2s, box-shadow 0.2s;
             object-fit: cover;
         }
@@ -349,6 +349,11 @@
             box-shadow: 8px 8px 0px var(--black);
             gap: 30px;
             transition: transform 0.2s;
+            margin-bottom: 30px; /* Jarak antar kartu */
+        }
+
+        .achievement-card:last-child {
+            margin-bottom: 0; /* Menghilangkan margin di kartu terakhir */
         }
 
         .achievement-card:hover {
@@ -675,7 +680,6 @@
                 border-right: none; 
             }
 
-            /* Ubah Hero menjadi kolom tunggal: Title -> Image -> Desc -> Button */
             .hero-inner {
                 display: flex;
                 flex-direction: column;
@@ -687,10 +691,9 @@
                 line-height: 1.2;
             }
 
-            /* Penyesuaian Foto di Mobile */
             .hero-image-wrapper img {
                 max-width: 100%;
-                transform: rotate(0deg); /* Menghapus rotasi agar fit di layar HP */
+                transform: rotate(0deg); 
                 box-shadow: 8px 8px 0px var(--black);
             }
 
@@ -771,7 +774,7 @@
                 <h1 class="hero-title">DIGITAL MARKETING SUPERVISOR | SEO & PERFORMANCE SPECIALIST</h1>
                 
                 <div class="hero-image-wrapper">
-                    <img src="https://i.ibb.co.com/qM6cpRJn/Gemini-Generated-Image-k8sfmsk8sfmsk8sf-modified-1.webp" alt="Dimas Basitu - Profile Picture">
+                    <img src="https://i.imgur.com/TkkmmWz.png" alt="Dimas Basitu - Profile Picture">
                 </div>
 
                 <div class="hero-desc-container">
@@ -924,6 +927,15 @@
                     </div>
                     <div class="achievement-icon">🏆</div>
                 </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-year">2023</div>
+                    <div class="achievement-text">
+                        <h3>Best Advertiser</h3>
+                        <p>Bio Industri Omnipresen</p>
+                    </div>
+                    <div class="achievement-icon">🎯</div>
+                </div>
             </section>
 
             <section id="work-projects">
@@ -1006,6 +1018,12 @@
                                 </div>
                                 Looker Studio
                             </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M9 21.056V3l11 8.04-5.323 1.056 3.486 6.815-2.698 1.38-3.483-6.814L9 21.056z"/></svg>
+                                </div>
+                                Microsoft Clarity
+                            </li>
                         </ul>
                     </div>
 
@@ -1030,6 +1048,12 @@
                                 </div>
                                 Screaming Frog
                             </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M6 4v8a6 6 0 0 0 12 0V4h-3v8a3 3 0 0 1-6 0V4H6z"/></svg>
+                                </div>
+                                Ubersuggest
+                            </li>
                         </ul>
                     </div>
 
@@ -1041,6 +1065,12 @@
                                     <svg viewBox="0 0 24 24"><path d="M21.056 9.385c-1.385-2.083-4.088-2.618-6.04-1.196L12 10.368l-3.016-2.18c-1.952-1.422-4.655-.887-6.04 1.196C1.558 11.468 2.053 14 4.145 15.422l3.016 2.18c1.952 1.422 4.655.887 6.04-1.196l.8-.976.8.976c1.385 2.083 4.088 2.618 6.04 1.196 2.092-1.422 2.587-3.954 1.199-6.037l-.984-2.18z"/></svg>
                                 </div>
                                 Meta Events Manager
+                            </li>
+                            <li class="tool-item">
+                                <div class="tool-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg>
+                                </div>
+                                Meta Ads Manager
                             </li>
                             <li class="tool-item">
                                 <div class="tool-icon" aria-hidden="true">
@@ -1125,8 +1155,8 @@
                 <a href="https://wa.me/6285157381244" target="_blank" class="social-icon" aria-label="WhatsApp">
                     <svg viewBox="0 0 24 24">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-                    </svg>
-                </a>
+                                    </svg>
+                                </a>
             </div>
             <div class="footer-text">
                 © 2026 DIMAS BASITU. ALL RIGHTS RESERVED.
@@ -1135,5 +1165,3 @@
 
     </div> </body>
 </html>
-
-
