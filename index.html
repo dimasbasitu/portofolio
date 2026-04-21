@@ -33,7 +33,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Pembungkus utama untuk mencegah scroll horizontal tanpa merusak sticky header */
         .main-wrapper {
             overflow-x: hidden;
             width: 100%;
@@ -44,7 +43,7 @@
             color: inherit;
         }
 
-        /* Navbar - Dibuat Sticky */
+        /* Navbar */
         header {
             display: flex;
             justify-content: space-between;
@@ -52,7 +51,6 @@
             padding: 20px 50px;
             border-bottom: var(--border-thick);
             background-color: var(--white);
-            position: -webkit-sticky;
             position: sticky;
             top: 0;
             z-index: 9999;
@@ -105,7 +103,6 @@
             z-index: 5;
         }
 
-        /* CSS Grid untuk membagi teks dan gambar di Desktop */
         .hero-inner {
             display: grid;
             grid-template-columns: 1.4fr 1fr;
@@ -117,17 +114,14 @@
         }
 
         .hero-title {
-            font-size: 5.5rem;
+            font-size: clamp(2.5rem, 5vw, 5.5rem);
             font-weight: 700;
             line-height: 1;
             text-transform: uppercase;
             grid-column: 1 / 2;
             grid-row: 1 / 2;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
         }
 
-        /* Wrapper Gambar Hero */
         .hero-image-wrapper {
             grid-column: 2 / 3;
             grid-row: 1 / 4;
@@ -183,13 +177,6 @@
             box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
         }
 
-        /* Download CV Button */
-        .hero-actions {
-            grid-column: 1 / 2;
-            grid-row: 3 / 4;
-            margin-top: 10px;
-        }
-
         .btn-download {
             display: inline-flex;
             align-items: center;
@@ -212,7 +199,7 @@
             color: var(--black);
         }
 
-        /* Marquee Section */
+        /* Marquee */
         .marquee-wrapper {
             background-color: var(--black);
             color: var(--white);
@@ -233,21 +220,15 @@
             align-items: center;
         }
 
-        .marquee-content span {
-            margin: 0 20px;
-        }
-
-        .marquee-content .star {
-            color: var(--yellow);
-            font-size: 1.5rem;
-        }
+        .marquee-content span { margin: 0 20px; }
+        .marquee-content .star { color: var(--yellow); font-size: 1.5rem; }
 
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* Layout untuk Section Bawah */
+        /* Common Section Layout */
         .section-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -263,12 +244,8 @@
             text-transform: uppercase;
         }
 
-        /* Experience Section */
-        #experience {
-            padding: 80px 50px;
-            border-bottom: var(--border-thick);
-        }
-
+        /* Experience */
+        #experience { padding: 80px 50px; border-bottom: var(--border-thick); }
         .job-card {
             border: var(--border-thin);
             padding: 30px;
@@ -277,12 +254,7 @@
             box-shadow: 6px 6px 0px var(--black);
             transition: transform 0.2s;
         }
-
-        .job-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 10px 10px 0px var(--black);
-        }
-
+        .job-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--black); }
         .job-header {
             display: flex;
             justify-content: space-between;
@@ -292,54 +264,12 @@
             border-bottom: 2px dashed var(--black);
             padding-bottom: 10px;
         }
-        
-        .job-title {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-        }
+        .job-title { font-size: 1.5rem; text-transform: uppercase; }
+        .job-date { background-color: var(--black); color: var(--white); padding: 5px 10px; font-size: 0.9rem; }
 
-        .job-company {
-            font-size: 1.1rem;
-            color: #444;
-        }
-
-        .job-date {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 5px 10px;
-            font-size: 0.9rem;
-        }
-
-        .job-summary {
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .job-details {
-            padding-left: 20px;
-            font-size: 0.95rem;
-        }
-
-        .job-details li {
-            margin-bottom: 8px;
-        }
-
-        /* Achievements Section */
-        #achievements {
-            padding: 80px 50px;
-            border-bottom: var(--border-thick);
-            background-color: var(--red);
-        }
-
-        .achievements-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-            color: var(--white);
-            text-shadow: 4px 4px 0px var(--black);
-        }
-
+        /* Achievements */
+        #achievements { padding: 80px 50px; border-bottom: var(--border-thick); background-color: var(--red); }
+        .achievements-title { font-size: 3rem; font-weight: 700; margin-bottom: 40px; text-transform: uppercase; color: var(--white); text-shadow: 4px 4px 0px var(--black); }
         .achievement-card {
             display: flex;
             align-items: center;
@@ -348,406 +278,104 @@
             padding: 30px;
             box-shadow: 8px 8px 0px var(--black);
             gap: 30px;
-            transition: transform 0.2s;
-            margin-bottom: 30px; /* Jarak antar kartu */
+            margin-bottom: 30px;
         }
+        .achievement-year { font-size: 4rem; font-weight: 700; color: var(--blue); border-right: var(--border-thick); padding-right: 30px; text-shadow: 3px 3px 0px var(--black); }
+        .achievement-text h3 { font-size: 2.5rem; text-transform: uppercase; line-height: 1.1; }
 
-        .achievement-card:last-child {
-            margin-bottom: 0; /* Menghilangkan margin di kartu terakhir */
-        }
-
-        .achievement-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0px var(--black);
-        }
-
-        .achievement-year {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--blue);
-            border-right: var(--border-thick);
-            padding-right: 30px;
-            line-height: 1;
-            text-shadow: 3px 3px 0px var(--black);
-        }
-
-        .achievement-text h3 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 5px;
-        }
-
-        .achievement-text p {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #444;
-        }
-
-        .achievement-icon {
-            font-size: 5rem;
-            margin-left: auto;
-        }
-
-        /* Work Projects Section */
+        /* Work Projects - Updated to 2x2 Grid */
         #work-projects {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
             border-bottom: var(--border-thick);
         }
 
         .project-card-container {
             border-right: var(--border-thick);
+            border-bottom: var(--border-thick);
             padding: 50px 40px;
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
+
+        .project-card-container:nth-child(2n) { border-right: none; }
+        .project-card-container:nth-child(3), .project-card-container:nth-child(4) { border-bottom: none; }
 
         .project-card-container:nth-child(1) { background-color: var(--white); }
         .project-card-container:nth-child(2) { background-color: var(--light-blue); }
-        .project-card-container:nth-child(3) { background-color: var(--yellow); border-right: none; }
+        .project-card-container:nth-child(3) { background-color: var(--yellow); }
+        .project-card-container:nth-child(4) { background-color: var(--bg-color); }
 
         .project-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             text-decoration: underline;
             margin-bottom: 20px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
             line-height: 1.1;
-            overflow-wrap: break-word;
-            word-wrap: break-word;
         }
 
-        .project-title a {
-            color: var(--black);
-        }
+        .arrow-icon { font-size: 2.5rem; line-height: 1; flex-shrink: 0; margin-left: 10px; }
 
-        .arrow-icon {
-            font-size: 2.5rem;
-            text-decoration: none;
-            margin-left: 15px;
-            line-height: 1;
-            flex-shrink: 0;
-        }
+        .project-desc { font-size: 1rem; font-weight: 700; margin-bottom: 30px; flex-grow: 1; }
 
-        .project-desc {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+        .tag { border: 2px solid var(--black); padding: 5px 10px; font-size: 0.8rem; font-weight: 700; background-color: var(--white); }
 
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tag {
-            border: 2px solid var(--black);
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            background-color: var(--white);
-        }
-
-        /* Tools Section */
-        #tools {
-            padding: 80px 50px;
-            border-bottom: var(--border-thick);
-            background-color: var(--white);
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .tool-category-card {
-            border: var(--border-thick);
-            padding: 30px;
-            box-shadow: 6px 6px 0px var(--black);
-            transition: transform 0.2s;
-        }
-
-        .tool-category-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 10px 10px 0px var(--black);
-        }
-
+        /* Tools */
+        #tools { padding: 80px 50px; border-bottom: var(--border-thick); background-color: var(--white); }
+        .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .tool-category-card { border: var(--border-thick); padding: 30px; box-shadow: 6px 6px 0px var(--black); transition: transform 0.2s; }
+        .tool-category-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--black); }
         .tool-category-card:nth-child(1) { background-color: var(--light-blue); }
         .tool-category-card:nth-child(2) { background-color: var(--yellow); }
         .tool-category-card:nth-child(3) { background-color: var(--bg-color); }
+        .tool-category-title { font-size: 1.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 25px; border-bottom: 2px dashed var(--black); padding-bottom: 10px; }
+        .tool-list { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+        .tool-item { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; font-weight: 700; }
+        .tool-icon { width: 40px; height: 40px; background-color: var(--white); border: 2px solid var(--black); padding: 6px; flex-shrink: 0; display: flex; justify-content: center; align-items: center; }
 
-        .tool-category-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-            border-bottom: 2px dashed var(--black);
-            padding-bottom: 10px;
-            line-height: 1.2;
-        }
-
-        .tool-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .tool-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .tool-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: var(--white);
-            border: 2px solid var(--black);
-            padding: 6px;
-            flex-shrink: 0;
-        }
-
-        .tool-icon svg {
-            width: 100%;
-            height: 100%;
-            fill: var(--black);
-        }
-
-        /* Certifications Section */
-        #certifications {
-            padding: 80px 50px;
-            border-bottom: var(--border-thick);
-            background-color: var(--white);
-        }
-
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .cert-card {
-            border: var(--border-thin);
-            padding: 30px;
-            background-color: var(--bg-color);
-            box-shadow: 6px 6px 0px var(--black);
-            transition: transform 0.2s;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .cert-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 10px 10px 0px var(--black);
-        }
-
+        /* Certifications */
+        #certifications { padding: 80px 50px; border-bottom: var(--border-thick); background-color: var(--white); }
+        .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .cert-card { border: var(--border-thin); padding: 30px; background-color: var(--bg-color); box-shadow: 6px 6px 0px var(--black); transition: transform 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .cert-card:hover { transform: translate(-4px, -4px); box-shadow: 10px 10px 0px var(--black); }
         .cert-card:nth-child(1) { background-color: var(--white); }
         .cert-card:nth-child(2) { background-color: var(--light-blue); }
         .cert-card:nth-child(3) { background-color: var(--yellow); }
+        .cert-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; margin-bottom: 20px; padding: 5px 15px; border: var(--border-thin); background-color: var(--white); box-shadow: 2px 2px 0px var(--black); }
+        .cert-title-text { font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 30px; }
+        .btn-view { display: block; text-align: center; padding: 12px; background-color: var(--black); color: var(--white); font-weight: 700; text-transform: uppercase; border: 2px solid var(--black); transition: all 0.2s; }
+        .btn-view:hover { background-color: var(--white); color: var(--black); box-shadow: 4px 4px 0px var(--black); transform: translate(-2px, -2px); }
 
-        .cert-brand {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            padding: 5px 15px;
-            border: var(--border-thin);
-            background-color: var(--white);
-            box-shadow: 2px 2px 0px var(--black);
-        }
+        /* Contact */
+        #contact { background-color: var(--black); color: var(--white); text-align: center; padding: 100px 20px 40px; }
+        .contact-title { font-size: 4rem; font-weight: 700; margin-bottom: 40px; }
+        .social-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 60px; }
+        .social-icon { width: 60px; height: 60px; background-color: var(--white); display: flex; justify-content: center; align-items: center; border-radius: 5px; color: var(--black); transition: transform 0.2s; }
+        .social-icon:hover { transform: scale(1.1); }
+        .social-icon svg { width: 30px; height: 30px; fill: currentColor; }
+        .footer-text { font-size: 0.8rem; color: #888; }
 
-        .cert-brand svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .cert-title-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            line-height: 1.2;
-        }
-
-        .btn-view {
-            display: block;
-            text-align: center;
-            padding: 12px;
-            background-color: var(--black);
-            color: var(--white);
-            font-weight: 700;
-            text-transform: uppercase;
-            border: 2px solid var(--black);
-            transition: all 0.2s;
-        }
-
-        .btn-view:hover {
-            background-color: var(--white);
-            color: var(--black);
-            box-shadow: 4px 4px 0px var(--black);
-            transform: translate(-2px, -2px);
-        }
-
-        /* Contact Section */
-        #contact {
-            background-color: var(--black);
-            color: var(--white);
-            text-align: center;
-            padding: 100px 20px 40px;
-        }
-
-        .contact-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            overflow-wrap: break-word;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-
-        .social-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 5px;
-            color: var(--black);
-            transition: transform 0.2s;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .social-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: currentColor;
-        }
-
-        .footer-text {
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        /* Tablet & Laptop Sedang */
+        /* Tablet & Mobile Queries */
         @media (max-width: 1024px) {
-            .hero-inner { grid-template-columns: 1fr 1fr; }
-            .hero-title { font-size: 4.5rem; }
+            .hero-inner { grid-template-columns: 1fr; }
             #work-projects { grid-template-columns: 1fr; }
-            .project-card-container { border-right: none; border-bottom: var(--border-thick); }
-            .project-card-container:last-child { border-bottom: none; }
-            .tools-grid { grid-template-columns: 1fr; }
-            .cert-grid { grid-template-columns: 1fr 1fr; }
+            .project-card-container { border-right: none !important; border-bottom: var(--border-thick) !important; }
+            .project-card-container:last-child { border-bottom: none !important; }
+            .tools-grid, .cert-grid { grid-template-columns: 1fr; }
         }
 
-        /* MOBILE VIEW */
         @media (max-width: 768px) {
-            header { 
-                padding: 15px; 
-                flex-direction: column; 
-                gap: 15px; 
-            }
-            nav { justify-content: center; }
-            
-            #hero { 
-                padding: 50px 20px; 
-                border-left: none; 
-                border-right: none; 
-            }
-            .section-container { 
-                border-left: none; 
-                border-right: none; 
-            }
-
-            .hero-inner {
-                display: flex;
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .hero-title { 
-                font-size: clamp(2.2rem, 10vw, 3.5rem); 
-                line-height: 1.2;
-            }
-
-            .hero-image-wrapper img {
-                max-width: 100%;
-                transform: rotate(0deg); 
-                box-shadow: 8px 8px 0px var(--black);
-            }
-
-            .section-title, .achievements-title { 
-                font-size: 2.5rem; 
-            }
-
-            .blue-circle { 
-                width: 80px; 
-                height: 80px; 
-                top: 20px; 
-                right: 20px; 
-            }
-            .red-shape {
-                width: 100px;
-                height: 80px;
-            }
-
-            #experience, #achievements, #work-projects, #tools, #certifications { 
-                padding: 40px 15px; 
-            }
-            .job-card, .achievement-card, .tool-category-card, .cert-card { 
-                padding: 20px; 
-            }
-            .project-card-container { 
-                padding: 30px 15px; 
-            }
-
-            .yellow-box { 
-                padding: 20px; 
-                font-size: 1rem; 
-            }
-            .job-header { 
-                flex-direction: column; 
-                align-items: flex-start; 
-                gap: 10px; 
-            }
-            .job-date { margin-top: 5px; }
-            .project-title { font-size: 1.5rem; }
-
-            .achievement-card { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 15px; 
-            }
-            .achievement-year { 
-                border-right: none; 
-                border-bottom: var(--border-thick); 
-                padding-right: 0; 
-                padding-bottom: 15px; 
-            }
-            .achievement-icon { margin: 0 auto; }
-            
-            .cert-grid { grid-template-columns: 1fr; }
+            header { padding: 15px; flex-direction: column; gap: 15px; }
+            #hero { padding: 50px 20px; border: none; }
+            .section-container { border: none; }
+            .hero-title { font-size: 2.8rem; }
+            .achievement-card { flex-direction: column; text-align: center; }
+            .achievement-year { border-right: none; border-bottom: var(--border-thick); padding: 0 0 15px 0; }
+            #experience, #achievements, #tools, #certifications { padding: 40px 15px; }
         }
     </style>
 </head>
@@ -769,7 +397,6 @@
 
         <section id="hero">
             <div class="blue-circle"></div>
-            
             <div class="hero-inner">
                 <h1 class="hero-title">DIGITAL MARKETING SUPERVISOR | SEO & PERFORMANCE SPECIALIST</h1>
                 
@@ -787,11 +414,7 @@
                 <div class="hero-actions">
                     <a href="https://drive.google.com/file/d/1fljsLePmhwkNYYCZo8bzE7jZGe6SHF6g/view?usp=sharing" target="_blank" class="btn-download">
                         DOWNLOAD CV
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                     </a>
                 </div>
             </div>
@@ -804,19 +427,14 @@
                 <span>META ADS</span> <span class="star">&#9733;</span>
                 <span>GOOGLE ADS</span> <span class="star">&#9733;</span>
                 <span>PERFORMANCE MARKETING</span> <span class="star">&#9733;</span>
-                <span>DIGITAL ADVERTISING</span> <span class="star">&#9733;</span>
                 <span>DATA ANALYSIS</span> <span class="star">&#9733;</span>
-                <span>BUDGET MANAGEMENT</span> <span class="star">&#9733;</span>
                 <span>CRO</span> <span class="star">&#9733;</span>
-                
                 <span>SEO</span> <span class="star">&#9733;</span>
                 <span>TECHNICAL SEO</span> <span class="star">&#9733;</span>
                 <span>META ADS</span> <span class="star">&#9733;</span>
                 <span>GOOGLE ADS</span> <span class="star">&#9733;</span>
                 <span>PERFORMANCE MARKETING</span> <span class="star">&#9733;</span>
-                <span>DIGITAL ADVERTISING</span> <span class="star">&#9733;</span>
                 <span>DATA ANALYSIS</span> <span class="star">&#9733;</span>
-                <span>BUDGET MANAGEMENT</span> <span class="star">&#9733;</span>
                 <span>CRO</span> <span class="star">&#9733;</span>
             </div>
         </div>
@@ -830,18 +448,15 @@
                     <div class="job-header">
                         <div>
                             <div class="job-title">Digital Marketing Supervisor</div>
-                            <div class="job-company">PT Qhome Sukses Abadi (Qhomemart) Yogyakarta, Indonesia</div>
+                            <div class="job-company">PT Qhome Sukses Abadi (Qhomemart) Yogyakarta</div>
                         </div>
                         <div class="job-date">Aug 2025 - Present</div>
                     </div>
-                    <p class="job-summary">
-                        Manage Google Ads. Meta Ads, and SEO strategies, including budget planning, campaign optimization, and performance analysis. Improve ROAS, reduce acquisition costs, and boost organic visibility through data-driven execution and cross-team collaboration.
-                    </p>
+                    <p class="job-summary">Manage Google Ads, Meta Ads, and SEO strategies. Reduce acquisition costs and boost organic visibility through data-driven execution.</p>
                     <ul class="job-details">
-                        <li>Reduced cost per acquisition (CPA) by 35% through optimized bidding, targeting, and creative testing.</li>
-                        <li>Boosted website conversions by 40% after implementing data-driven landing page and funnel improvements.</li>
-                        <li>Managed and optimized monthly ad budgets of up to IDR 60-150 million with efficient cost control.</li>
-                        <li>Improved page ranking performance, with 20+ priority keywords reaching Google page 1.</li>
+                        <li>Reduced CPA by 35% through optimized bidding and creative testing.</li>
+                        <li>Boosted website conversions by 40% via landing page & funnel improvements.</li>
+                        <li>Managed monthly ad budgets of IDR 60-150 million.</li>
                     </ul>
                 </div>
 
@@ -849,17 +464,14 @@
                     <div class="job-header">
                         <div>
                             <div class="job-title">SEO Supervisor</div>
-                            <div class="job-company">Bio Industri Omnipresen Yogyakarta, Indonesia</div>
+                            <div class="job-company">Bio Industri Omnipresen Yogyakarta</div>
                         </div>
                         <div class="job-date">Oct 2024 - Jul 2025</div>
                     </div>
-                    <p class="job-summary">
-                        Led SEO strategies and optimizations for 28 websites and 1 web store. Responsible for technical audits, keyword research, performance analysis, and team coordination to improve organic visibility and sustained traffic growth.
-                    </p>
+                    <p class="job-summary">Led SEO strategies for 28 websites. Responsible for technical audits and keyword research.</p>
                     <ul class="job-details">
-                        <li>Increased organic traffic by 150% within 6 months through integrated SEO strategies.</li>
-                        <li>Reduced average bounce rate by 25% through content optimization and improved internal linking structure.</li>
-                        <li>Doubled B2B leads in 6 months by boosting product page visibility and implementing more strategic conversion forms.</li>
+                        <li>Increased organic traffic by 150% within 6 months.</li>
+                        <li>Reduced bounce rate by 25% through content optimization.</li>
                     </ul>
                 </div>
 
@@ -867,273 +479,110 @@
                     <div class="job-header">
                         <div>
                             <div class="job-title">Meta Ads Specialist</div>
-                            <div class="job-company">Bio Industri Omnipresen Yogyakarta, Indonesia</div>
+                            <div class="job-company">Bio Industri Omnipresen</div>
                         </div>
                         <div class="job-date">May 2022 - Oct 2024</div>
                     </div>
-                    <p class="job-summary">
-                        Managed and optimized Meta Ads (Facebook & Instagram) campaigns focusing on performance marketing strategies. Responsible for creating ad creatives (copywriting and visuals), budget allocation, and conducting A/B testing to improve campaign effectiveness.
-                    </p>
-                    <ul class="job-details">
-                        <li>Doubled B2B lead generation by targeting more relevant niche industries.</li>
-                        <li>Developed full-funnel advertising strategies, enhancing long-term campaign performance significantly.</li>
-                    </ul>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Meta Ads Specialist</div>
-                            <div class="job-company">Digimarka Yogyakarta, Indonesia</div>
-                        </div>
-                        <div class="job-date">May 2021 - Dec 2021</div>
-                    </div>
-                    <p class="job-summary">
-                        Designed, managed, and optimized paid ad campaigns on Meta platforms (Facebook & Instagram) for clients across various sectors.
-                    </p>
-                    <ul class="job-details">
-                        <li>Improved ROAS by up to 2.5x for several clients through refined audience segmentation and budget optimization.</li>
-                        <li>Reduced average CPC by 35% through creative testing and more relevant copywriting.</li>
-                        <li>Managed over 50 active campaigns simultaneously, focusing on efficiency and measurable results.</li>
-                    </ul>
-                </div>
-
-                <div class="job-card">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Digital Marketing Specialist</div>
-                            <div class="job-company">CV Magic Skin (Roro Mendut Skin) Yogyakarta, Indonesia</div>
-                        </div>
-                        <div class="job-date">Dec 2019 - Dec 2020</div>
-                    </div>
-                    <p class="job-summary">
-                        Oversaw all digital marketing initiatives, including e-commerce management, paid advertising planning (PPC), and landing page development.
-                    </p>
-                    <ul class="job-details">
-                        <li>Initiated remarketing strategies to improve customer retention and repeat purchases.</li>
-                        <li>Increased online sales conversion by optimizing user flow and product pages on the company's e-commerce platforms.</li>
-                    </ul>
+                    <p class="job-summary">Managed Meta Ads focusing on performance marketing and full-funnel advertising strategies.</p>
                 </div>
             </section>
 
             <section id="achievements">
                 <h2 class="achievements-title">Achievements</h2>
-                
                 <div class="achievement-card">
                     <div class="achievement-year">2024</div>
-                    <div class="achievement-text">
-                        <h3>Best Employee</h3>
-                        <p>Bio Industri Omnipresen</p>
-                    </div>
+                    <div class="achievement-text"><h3>Best Employee</h3><p>Bio Industri Omnipresen</p></div>
                     <div class="achievement-icon">🏆</div>
                 </div>
-
                 <div class="achievement-card">
                     <div class="achievement-year">2023</div>
-                    <div class="achievement-text">
-                        <h3>Best Advertiser</h3>
-                        <p>Bio Industri Omnipresen</p>
-                    </div>
+                    <div class="achievement-text"><h3>Best Advertiser</h3><p>Bio Industri Omnipresen</p></div>
                     <div class="achievement-icon">🎯</div>
                 </div>
             </section>
 
             <section id="work-projects">
-                
                 <div class="project-card-container">
                     <div class="project-title">
                         <a href="https://docs.google.com/spreadsheets/d/1k1qai2wSxsrwVXdLacDQVDmucoY3oostVpIYk2py4jY/edit?usp=sharing" target="_blank">SEO RANKING PORTOFOLIO AT QHOMEMART</a>
-                        <a href="https://docs.google.com/spreadsheets/d/1k1qai2wSxsrwVXdLacDQVDmucoY3oostVpIYk2py4jY/edit?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
+                        <a href="#" class="arrow-icon">&#8599;</a>
                     </div>
-                    <p class="project-desc">
-                        Ranked 140+ keywords on Google’s first page, including Rank 1 for high-volume terms (90k+ searches). Successfully dominated local and national search results to drive significant organic traffic and e-commerce growth.
-                    </p>
-                    <div class="tags">
-                        <span class="tag">SEO Strategy</span>
-                        <span class="tag">Technical SEO</span>
-                        <span class="tag">Keyword Research</span>
-                        <span class="tag">On-Page SEO</span>
-                        <span class="tag">E-commerce SEO</span>
-                    </div>
+                    <p class="project-desc">Ranked 140+ keywords on Google’s first page, including Rank 1 for high-volume terms (90k+ searches). Dominated local and national search results.</p>
+                    <div class="tags"><span class="tag">SEO Strategy</span><span class="tag">Technical SEO</span><span class="tag">E-commerce</span></div>
                 </div>
 
                 <div class="project-card-container">
                     <div class="project-title">
-                        <a href="https://drive.google.com/file/d/13KyHWcIgjKYJRWIjZVuRrFEHaY7Xw5Rf/view?usp=sharing" target="_blank">SEO STUDY CASE AT BIO INDUSTRI OMNIPRESEN</a>
-                        <a href="https://drive.google.com/file/d/13KyHWcIgjKYJRWIjZVuRrFEHaY7Xw5Rf/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
+                        <a href="https://drive.google.com/file/d/13KyHWcIgjKYJRWIjZVuRrFEHaY7Xw5Rf/view?usp=sharing" target="_blank">SEO CASE STUDY AT BIO INDUSTRI</a>
+                        <a href="#" class="arrow-icon">&#8599;</a>
                     </div>
-                    <p class="project-desc">
-                        Optimized the SEO performance for Bio Industri’s digital ecosystem, achieving 220K+ clicks and 4.4M+ impressions. Managed multiple B2B and WooCommerce-based platforms to enhance organic reach and establish a sustainable direct-to-consumer sales channel.
-                    </p>
-                    <div class="tags">
-                        <span class="tag">B2B SEO</span>
-                        <span class="tag">WooCommerce</span>
-                        <span class="tag">Organic Growth</span>
-                        <span class="tag">Digital Ecosystem</span>
-                        <span class="tag">Performance Optimization</span>
-                    </div>
+                    <p class="project-desc">Achieved 220K+ clicks and 4.4M+ impressions. Managed multiple B2B and WooCommerce-based platforms for organic reach.</p>
+                    <div class="tags"><span class="tag">B2B SEO</span><span class="tag">WooCommerce</span><span class="tag">Organic Growth</span></div>
                 </div>
 
                 <div class="project-card-container">
                     <div class="project-title">
-                        <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank">META ADS PERFORMANCE AT BIO INDUSTRI OMNIPRESEN</a>
-                        <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
+                        <a href="https://drive.google.com/file/d/1K2xNV3ZcGaYtwtRBeO0V8gCTgQUwNWBL/view?usp=sharing" target="_blank">META ADS PERFORMANCE AT BIO INDUSTRI</a>
+                        <a href="#" class="arrow-icon">&#8599;</a>
                     </div>
-                    <p class="project-desc">
-                        Managed end-to-end Meta Ads campaigns for niche wood and leather care products, achieving 2,000+ website purchases with a highly efficient Cost per Purchase (CPP) of IDR 670. Focused on creative testing and full-funnel optimization to scale D2C sales.
-                    </p>
-                    <div class="tags">
-                        <span class="tag">Meta Ads</span>
-                        <span class="tag">Creative Testing</span>
-                        <span class="tag">Full-Funnel Optimization</span>
-                        <span class="tag">D2C Scaling</span>
-                        <span class="tag">Performance Marketing</span>
-                    </div>
+                    <p class="project-desc">Achieved 2,000+ website purchases with an efficient CPP of IDR 670. Focused on creative testing and full-funnel optimization.</p>
+                    <div class="tags"><span class="tag">Meta Ads</span><span class="tag">D2C Scaling</span><span class="tag">Performance</span></div>
                 </div>
 
+                <div class="project-card-container">
+                    <div class="project-title">
+                        <a href="https://drive.google.com/file/d/1-BPNO5tDjxG5-btAA6QbmdGMygJAbsOs/view?usp=sharing" target="_blank">GOOGLE ADS: BRILIAN JAYA PRIMA</a>
+                        <a href="https://drive.google.com/file/d/1-BPNO5tDjxG5-btAA6QbmdGMygJAbsOs/view?usp=sharing" target="_blank" class="arrow-icon">&#8599;</a>
+                    </div>
+                    <p class="project-desc">Driven by a "Dual-Engine Strategy," this project achieved record-breaking efficiency in the building materials industry. Generated 4,200+ conversions with CPA < Rp10,000.</p>
+                    <div class="tags"><span class="tag">Google Ads</span><span class="tag">PMax Strategy</span><span class="tag">Search Ads</span><span class="tag">CPA Opt.</span></div>
+                </div>
             </section>
 
             <section id="tools">
                 <h2 class="section-title">Tools</h2>
                 <div class="tools-grid">
-                    
                     <div class="tool-category-card">
                         <h3 class="tool-category-title">Analysis</h3>
                         <ul class="tool-list">
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>
-                                </div>
-                                Google Analytics 4 (GA4)
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                                </div>
-                                Google Search Console
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
-                                </div>
-                                Looker Studio
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M9 21.056V3l11 8.04-5.323 1.056 3.486 6.815-2.698 1.38-3.483-6.814L9 21.056z"/></svg>
-                                </div>
-                                Microsoft Clarity
-                            </li>
+                            <li class="tool-item"><div class="tool-icon">📊</div> GA4</li>
+                            <li class="tool-item"><div class="tool-icon">🔍</div> Search Console</li>
+                            <li class="tool-item"><div class="tool-icon">📉</div> Looker Studio</li>
                         </ul>
                     </div>
-
                     <div class="tool-category-card">
                         <h3 class="tool-category-title">SEO Tools</h3>
                         <ul class="tool-list">
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
-                                </div>
-                                Ahrefs
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
-                                </div>
-                                SEMrush
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5c-.49 0-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20V8zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"/></svg>
-                                </div>
-                                Screaming Frog
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M6 4v8a6 6 0 0 0 12 0V4h-3v8a3 3 0 0 1-6 0V4H6z"/></svg>
-                                </div>
-                                Ubersuggest
-                            </li>
+                            <li class="tool-item"><div class="tool-icon">🔗</div> Ahrefs</li>
+                            <li class="tool-item"><div class="tool-icon">🐸</div> Screaming Frog</li>
                         </ul>
                     </div>
-
                     <div class="tool-category-card">
-                        <h3 class="tool-category-title">Technical Ads</h3>
+                        <h3 class="tool-category-title">Ads Manager</h3>
                         <ul class="tool-list">
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M21.056 9.385c-1.385-2.083-4.088-2.618-6.04-1.196L12 10.368l-3.016-2.18c-1.952-1.422-4.655-.887-6.04 1.196C1.558 11.468 2.053 14 4.145 15.422l3.016 2.18c1.952 1.422 4.655.887 6.04-1.196l.8-.976.8.976c1.385 2.083 4.088 2.618 6.04 1.196 2.092-1.422 2.587-3.954 1.199-6.037l-.984-2.18z"/></svg>
-                                </div>
-                                Meta Events Manager
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg>
-                                </div>
-                                Meta Ads Manager
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"/></svg>
-                                </div>
-                                Google Ads Manager
-                            </li>
-                            <li class="tool-item">
-                                <div class="tool-icon" aria-hidden="true">
-                                    <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
-                                </div>
-                                Google Tag Manager (GTM)
-                            </li>
+                            <li class="tool-item"><div class="tool-icon">📱</div> Meta Ads</li>
+                            <li class="tool-item"><div class="tool-icon">💻</div> Google Ads</li>
+                            <li class="tool-item"><div class="tool-icon">🏷️</div> GTM</li>
                         </ul>
                     </div>
-
                 </div>
             </section>
 
             <section id="certifications">
                 <h2 class="section-title">Certifications</h2>
-                
                 <div class="cert-grid">
-                    
                     <div class="cert-card">
-                        <div>
-                            <div class="cert-brand">
-                                <svg viewBox="0 0 24 24" fill="#ff7a59">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
-                                </svg>
-                                HubSpot Academy
-                            </div>
-                            <h3 class="cert-title-text">Digital Marketing</h3>
-                        </div>
-                        <a href="https://app-na2.hubspot.com/academy/achievements/9pg03xcv/en/1/dimas-basitu/digital-marketing" target="_blank" class="btn-view">View Credential &#8599;</a>
+                        <div><div class="cert-brand">HubSpot</div><h3 class="cert-title-text">Digital Marketing</h3></div>
+                        <a href="#" class="btn-view">View Credential</a>
                     </div>
-
                     <div class="cert-card">
-                        <div>
-                            <div class="cert-brand">
-                                <svg viewBox="0 0 24 24" fill="#ff7a59">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/>
-                                </svg>
-                                HubSpot Academy
-                            </div>
-                            <h3 class="cert-title-text">Content Marketing</h3>
-                        </div>
-                        <a href="https://app-na2.hubspot.com/academy/achievements/yw64hhwy/en/1/dimas-basitu/content-marketing" target="_blank" class="btn-view">View Credential &#8599;</a>
+                        <div><div class="cert-brand">HubSpot</div><h3 class="cert-title-text">Content Marketing</h3></div>
+                        <a href="#" class="btn-view">View Credential</a>
                     </div>
-
                     <div class="cert-card">
-                        <div>
-                            <div class="cert-brand">
-                                <svg viewBox="0 0 24 24" fill="#1e3a8a">
-                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/>
-                                </svg>
-                                Badan Nasional Sertifikasi Profesi (BNSP)
-                            </div>
-                            <h3 class="cert-title-text">Digital Marketing</h3>
-                        </div>
-                        <a href="https://drive.google.com/file/d/1Yxb_Sq5QvKe1KdMvVXsEA466-TQylv_I/view" target="_blank" class="btn-view">View Credential &#8599;</a>
+                        <div><div class="cert-brand">BNSP</div><h3 class="cert-title-text">Digital Marketing</h3></div>
+                        <a href="#" class="btn-view">View Credential</a>
                     </div>
-
                 </div>
             </section>
 
@@ -1142,27 +591,13 @@
         <section id="contact">
             <h2 class="contact-title">LET'S TALK</h2>
             <div class="social-links">
-                <a href="mailto:tkjdhimas@gmail.com" class="social-icon" aria-label="Email">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/dimas-basitu/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-1.85 0-2.59 1.02-3 1.66v-1.42h-2.9v9.32h2.9v-5.2c0-.52.1-1.03.48-1.4.38-.37.91-.48 1.45-.48 1.13 0 1.54.83 1.54 2.05v5.03h2.89M7.05 10.5h2.9v9.32h-2.9v-9.32M8.5 4.5a1.75 1.75 0 1 0 0 3.5 1.75 1.75 0 0 0 0-3.5z"/>
-                    </svg>
-                </a>
-                <a href="https://wa.me/6285157381244" target="_blank" class="social-icon" aria-label="WhatsApp">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-                                    </svg>
-                                </a>
+                <a href="mailto:tkjdhimas@gmail.com" class="social-icon">📧</a>
+                <a href="https://www.linkedin.com/in/dimas-basitu/" target="_blank" class="social-icon">🔗</a>
+                <a href="https://wa.me/6285157381244" target="_blank" class="social-icon">💬</a>
             </div>
-            <div class="footer-text">
-                © 2026 DIMAS BASITU. ALL RIGHTS RESERVED.
-            </div>
+            <div class="footer-text">© 2026 DIMAS BASITU. ALL RIGHTS RESERVED.</div>
         </section>
 
-    </div> </body>
+    </div> 
+</body>
 </html>
-
